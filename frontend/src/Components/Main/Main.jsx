@@ -1,5 +1,6 @@
 import React from "react";
 import * as C from './Styles'
+import Grid from "../Grid/Grid";
 
 const Main = () => {
     return (
@@ -19,7 +20,8 @@ const Main = () => {
                         <C.Button>Adicionar</C.Button>
 
                     </C.Form>
-                </C.Content>    
+
+                </C.Content> 
         </C.Main>
     )
 }

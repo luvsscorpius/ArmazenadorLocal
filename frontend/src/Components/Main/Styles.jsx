@@ -14,8 +14,9 @@ export const Title = styled.h1``
 
 export const Content = styled.div`
     border: 1px solid blue;
-    height: 50vh;
     width: 90%;
+    display: flex;
+    flex-direction: column;
 `
 
 export const Form = styled.form`
