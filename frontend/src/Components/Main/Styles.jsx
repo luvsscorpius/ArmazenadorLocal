@@ -1,20 +1,12 @@
 import styled from 'styled-components'
 
-export const Main = styled.div`
-    width: 100%;
-    height: 100vh;
-    border: 1px solid red;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-`;
-
-export const Title = styled.h1``
+export const Title = styled.h1`
+    text-align: center;
+`
 
 export const Content = styled.div`
     border: 1px solid blue;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 `
@@ -29,7 +21,7 @@ export const Form = styled.form`
 export const Label = styled.label``
 
 export const Input = styled.input`
-    width: 10%;
+    width: 15%;
     text-align: center
 `
 
