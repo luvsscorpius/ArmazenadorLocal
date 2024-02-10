@@ -1,14 +1,19 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Main from './Components/Main/Main';
 import Grid from './Components/Grid/Grid';
 
 function App() {
-  const [info, setInfo] = useState({nome: "", sobrenome: "", data: ""})
+  const [info, setInfo] = useState([])
+
+  useEffect(() => {
+    console.log("info:", info);
+    console.log("info.length:", info.length);
+  }, [info]);
 
   return (
     <>
-      <Main setInfo={setInfo} info={info}/>
-      <Grid info={info}/>
+      <Main setInfo={setInfo} info={info || []}/>
+      <Grid info={info || []}/>
     </>
   );
 }

@@ -6,8 +6,6 @@ import Main from "../Main/Main";
 
 const Grid = ({info}) => {
 
-    console.log(info)
-
     return (
         <G.GridContainer>
             <G.Table>
@@ -22,14 +20,14 @@ const Grid = ({info}) => {
 
                 <G.Tbody>
 
-                    {/* {info.map(inf => (
+                    {info.length > 0 && info.map(inf => (
                         <G.Tr>
                             <G.Td>{inf.nome}</G.Td>
                             <G.Td>{inf.sobrenome}</G.Td>
                             <G.Td>{inf.data}</G.Td>
                             <G.Th><FontAwesomeIcon icon={faTrash}/></G.Th> 
                         </G.Tr>
-                    ))} */}
+                    ))}
 
                 </G.Tbody>
             </G.Table>

@@ -1,21 +1,40 @@
 import React, {useEffect, useState} from "react";
 import * as C from './Styles'
-import Grid from "../Grid/Grid";
 
 const Main = ({setInfo, info}) => {
 
-    const armazenar = (chave, valor) => {
+    const [data, setData] = useState('')
+
+    const armazenar = () => {
             // Stringify para usar em objeto
             // Criando uma constante onde vai verificar se existe a chave se não cria um array vazio
-            const pessoas = JSON.parse(localStorage.getItem(chave)) || []
-            // Passa a chave e transforma em JSON, passa o array e o valor
-            localStorage.setItem(chave, JSON.stringify([...pessoas, valor]))
-            console.log(pessoas)
-            setInfo(pessoas)
+            // const pessoas = JSON.parse(localStorage.getItem(chave)) || []
+            // // Passa a chave e transforma em JSON, passa o array e o valor
+            // localStorage.setItem(chave, JSON.stringify([...pessoas, valor]))
+            // console.log(pessoas)
+            // setInfo(pessoas)
+            
+            console.log('Adicionei')
+            console.log('Nome:', info.nome, 'Sobrenome: ', info.sobrenome, 'Data: ', data)
+
+            const novoObjeto = {
+                nome: info.nome, 
+                sobrenome: info.sobrenome,
+                data: data
+            }
+    
+            console.log("Novo objeto: ", novoObjeto)
+           
+            const novaInfo = Array.isArray(info) ? [...info, novoObjeto] : [novoObjeto]
+            setInfo(novaInfo)
+
+            setData('')
+
+            console.log(info)
     }
 
-    const handleAdicionar = () => {
-        armazenar("pessoas", info) // O primeiro parâmetro é o nome da chave onde os dados serao armazenados e em seguida o objeto info
+    const handleChange = (e) => {
+        console.log('teste')
     }
 
     return (
@@ -23,16 +42,16 @@ const Main = ({setInfo, info}) => {
             <C.Title>Armazenador Local</C.Title>
                 <C.Content>
                     <C.Form>
-                        <C.Label for="nome">Nome</C.Label>
-                        <C.Input name="nome" value={(e) => e.target.value} onChange={(e) => setInfo({...info, nome: e.target.value})}/>
+                        <C.Label htmlFor="nome">Nome</C.Label>
+                        <C.Input name="nome" id="nome" value={info.nome} onChange={(e) => {setInfo({...info, nome: e.target.value}); handleChange()}} />
 
-                        <C.Label for="sobrenome">Sobrenome</C.Label>
-                        <C.Input name="sobrenome" value={(e) => e.target.value}  onChange={(e) => setInfo({...info, sobrenome: e.target.value})}/>
+                        <C.Label htmlFor="sobrenome">Sobrenome</C.Label>
+                        <C.Input name="sobrenome" id="sobrenome" value={info.sobrenome} onChange={(e) => {setInfo({...info, sobrenome: e.target.value}); handleChange()}} />
 
                         <C.Label>Data de nascimento</C.Label>
-                        <C.Input type="date"value={(e) => e.target.value}  onChange={(e) => setInfo({...info, data: e.target.value})}/>
+                        <C.Input type="date" value={data} onChange={(e) => {setInfo({...info, data: e.target.value}); setData(e.target.value); handleChange()}} />
 
-                        <C.Button type="button" onClick={handleAdicionar}>Adicionar</C.Button>
+                        <C.Button type="button" onClick={armazenar}>Adicionar</C.Button>
 
                     </C.Form>
                 </C.Content> 
