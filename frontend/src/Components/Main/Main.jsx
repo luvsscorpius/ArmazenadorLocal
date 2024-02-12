@@ -16,11 +16,10 @@ const Main = ({setInfo, info}) => {
             // console.log(pessoas)
             // setInfo(pessoas)
 
-            // Cria um novo objeto com as informações do states para adicionar ao state principal (simulando um banco de dados.)
-
             if ((nome === '') || (sobrenome === '') || (data === '')) {
                 alert('Preencha todas as informações antes de prosseguir.')
             } else {
+                // Cria um novo objeto com as informações do states para adicionar ao state principal (simulando um banco de dados.)
                 const novoObjeto = {
                     nome: nome, 
                     sobrenome: sobrenome,
