@@ -3,6 +3,8 @@ import * as C from './Styles'
 
 const Main = ({setInfo, info}) => {
 
+    const [nome, setNome] = useState('')
+    const [sobrenome, setSobrenome] = useState('')
     const [data, setData] = useState('')
 
     const armazenar = () => {
@@ -13,28 +15,27 @@ const Main = ({setInfo, info}) => {
             // localStorage.setItem(chave, JSON.stringify([...pessoas, valor]))
             // console.log(pessoas)
             // setInfo(pessoas)
-            
-            console.log('Adicionei')
-            console.log('Nome:', info.nome, 'Sobrenome: ', info.sobrenome, 'Data: ', data)
 
-            const novoObjeto = {
-                nome: info.nome, 
-                sobrenome: info.sobrenome,
-                data: data
+            // Cria um novo objeto com as informações do states para adicionar ao state principal (simulando um banco de dados.)
+
+            if ((nome === '') || (sobrenome === '') || (data === '')) {
+                alert('Preencha todas as informações antes de prosseguir.')
+            } else {
+                const novoObjeto = {
+                    nome: nome, 
+                    sobrenome: sobrenome,
+                    data: data
+                }
+                
+                // Verifica se info é um array antes de adicionar o novo objeto
+                if (Array.isArray(info)) {
+                    // Atualiza o estado com um novo array que inclui o novo objeto
+                    setInfo([...info, novoObjeto])
+                } else {
+                    // Se info nao for um array, cria um novo array com o novo objeto
+                    setInfo([novoObjeto])
+                }
             }
-    
-            console.log("Novo objeto: ", novoObjeto)
-           
-            const novaInfo = Array.isArray(info) ? [...info, novoObjeto] : [novoObjeto]
-            setInfo(novaInfo)
-
-            setData('')
-
-            console.log(info)
-    }
-
-    const handleChange = (e) => {
-        console.log('teste')
     }
 
     return (
@@ -43,13 +44,13 @@ const Main = ({setInfo, info}) => {
                 <C.Content>
                     <C.Form>
                         <C.Label htmlFor="nome">Nome</C.Label>
-                        <C.Input name="nome" id="nome" value={info.nome} onChange={(e) => {setInfo({...info, nome: e.target.value}); handleChange()}} />
+                        <C.Input name="nome" id="nome" value={info.nome} onChange={(e) => setNome(e.target.value)} />
 
                         <C.Label htmlFor="sobrenome">Sobrenome</C.Label>
-                        <C.Input name="sobrenome" id="sobrenome" value={info.sobrenome} onChange={(e) => {setInfo({...info, sobrenome: e.target.value}); handleChange()}} />
+                        <C.Input name="sobrenome" id="sobrenome" value={info.sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
 
                         <C.Label>Data de nascimento</C.Label>
-                        <C.Input type="date" value={data} onChange={(e) => {setInfo({...info, data: e.target.value}); setData(e.target.value); handleChange()}} />
+                        <C.Input type="date" value={data} onChange={(e) => setData(e.target.value) } />
 
                         <C.Button type="button" onClick={armazenar}>Adicionar</C.Button>
 
