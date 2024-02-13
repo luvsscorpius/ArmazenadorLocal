@@ -12,7 +12,7 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Title = styled.h1`
     text-align: center;
-    background-color: #070F2B;
+    background-color: #167F92;
     color: #fff;
     height: 100px;
     display: flex;
@@ -57,9 +57,9 @@ export const Input = styled.input`
 
 export const Button = styled.button`
     cursor: pointer;
-    background-color: #535C91;
+    background-color: #167F92;
     color: #eee;
     width: 90px;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px 1px #535C91;
+    border: 0;
 `

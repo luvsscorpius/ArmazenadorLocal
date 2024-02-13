@@ -21,6 +21,7 @@ const Main = ({setInfo, info}) => {
             } else {
                 // Cria um novo objeto com as informações do states para adicionar ao state principal (simulando um banco de dados.)
                 const novoObjeto = {
+                    id: info.length + 1,
                     nome: nome, 
                     sobrenome: sobrenome,
                     data: data

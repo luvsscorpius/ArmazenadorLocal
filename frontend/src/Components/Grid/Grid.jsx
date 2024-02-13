@@ -11,6 +11,7 @@ const Grid = ({info}) => {
             <G.Table>
                 <G.Thead>
                     <G.Tr>
+                        <G.Th className="id-column">Id</G.Th> 
                         <G.Th>Nome</G.Th> 
                         <G.Th>Sobrenome</G.Th> 
                         <G.Th>Data de nascimento</G.Th> 
@@ -22,10 +23,11 @@ const Grid = ({info}) => {
 
                     {info.length > 0 && info.map(inf => (
                         <G.Tr>
+                            <G.Td className="id-column">{inf.id}</G.Td>
                             <G.Td>{inf.nome}</G.Td>
                             <G.Td>{inf.sobrenome}</G.Td>
                             <G.Td>{inf.data}</G.Td>
-                            <G.Th><FontAwesomeIcon icon={faTrash}/></G.Th> 
+                            <G.Td><FontAwesomeIcon icon={faTrash}/></G.Td> 
                         </G.Tr>
                     ))}
 
