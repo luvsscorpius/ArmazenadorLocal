@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import * as C from './Styles'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Main = ({setInfo, info}) => {
 
@@ -17,7 +19,7 @@ const Main = ({setInfo, info}) => {
             // setInfo(pessoas)
 
             if ((nome === '') || (sobrenome === '') || (data === '')) {
-                alert('Preencha todas as informações antes de prosseguir.')
+                toast.warning('Insira todas as informações.')
             } else {
                 // Cria um novo objeto com as informações do states para adicionar ao state principal (simulando um banco de dados.)
                 const novoObjeto = {
@@ -35,6 +37,8 @@ const Main = ({setInfo, info}) => {
                     // Se info nao for um array, cria um novo array com o novo objeto
                     setInfo([novoObjeto])
                 }
+
+                toast.success('Informações adicionadas com sucesso.')
             }
 
             // Limpando os inputs depois de adicionar uma nova pessoa
@@ -49,10 +53,10 @@ const Main = ({setInfo, info}) => {
                 <C.Content>
                     <C.Form>
                         <C.Label htmlFor="nome">Nome</C.Label>
-                        <C.Input name="nome" id="nome" value={info.nome} onChange={(e) => setNome(e.target.value)} />
+                        <C.Input name="nome" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} />
 
                         <C.Label htmlFor="sobrenome">Sobrenome</C.Label>
-                        <C.Input name="sobrenome" id="sobrenome" value={info.sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
+                        <C.Input name="sobrenome" id="sobrenome" value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
 
                         <C.Label>Data de nascimento</C.Label>
                         <C.Input type="date" value={data} onChange={(e) => setData(e.target.value) } />
@@ -61,6 +65,7 @@ const Main = ({setInfo, info}) => {
 
                     </C.Form>
                 </C.Content> 
+                <ToastContainer/>
         </>
     )
 }
