@@ -36,6 +36,11 @@ const Main = ({setInfo, info}) => {
                     setInfo([novoObjeto])
                 }
             }
+
+            // Limpando os inputs depois de adicionar uma nova pessoa
+            document.getElementById('nome').value = ''
+            document.getElementById('sobrenome').value = ''
+            setData('')
     }
 
     return (
