@@ -2,19 +2,21 @@ import styled from 'styled-components'
 
 export const GridContainer = styled.div`
     border: 1px solid #167F92;
-    height: 100%;
     width: 90%;
     margin: 5px;
     display: flex;
     justify-content: space-around;
     margin: 10px auto;
     border-radius: 5px;
+    max-height: 77vh;
+    overflow-y: hidden;
 `
 
 export const Table = styled.table`
     width: 100%;
     border-collapse: collapse; // Mescla as bordas com as células
     border-spacing: 8px;
+    max-height: 77vh;
 `
 
 // Utilizada para definir a area do cabeçalho
@@ -40,7 +42,7 @@ export const Th = styled.th`
     box-sizing: border-box;
 
     &.id-column {
-        width: 100px;
+        width: 150px;
     }
 `
 
@@ -55,7 +57,7 @@ export const Td = styled.td`
     border-bottom: 1px solid #167F92; /* Adiciona borda inferior */
     
     &.id-column {
-        width: 100px;
+        width: 150px;
     }
 `
 
