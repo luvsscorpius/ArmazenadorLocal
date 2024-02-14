@@ -1,3 +1,4 @@
+import ReactPaginate from 'react-paginate'
 import styled from 'styled-components'
 
 export const GridContainer = styled.div`
@@ -6,10 +7,12 @@ export const GridContainer = styled.div`
     margin: 5px;
     display: flex;
     justify-content: space-around;
+    flex-direction: column;
     margin: 10px auto;
     border-radius: 5px;
     max-height: 77vh;
     overflow-y: hidden;
+
 `
 
 export const Table = styled.table`
@@ -69,4 +72,37 @@ export const Tr = styled.tr`
 
 export const DateTd = styled(Td)`
     min-width: 100px; /* Defina um tamanho mínimo para a célula de data */
+`
+
+export const StyledPagination = styled(ReactPaginate)`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+
+    li {
+        display: inline-block;
+        margin-right: 5px;
+        height: 30px;
+        margin-top: 13px;
+    }
+
+    a {
+        color: #333;
+        padding: 5px 10px;
+        border: 1px solid #ccc;
+        text-decoration: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #eee;
+        }
+    }
+
+    .active a {
+        background-color: #167F92;
+        color: #fff;
+        border-color: #167F92;
+    }
 `
