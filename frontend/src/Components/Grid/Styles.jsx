@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ReactPaginate from 'react-paginate'
 import styled from 'styled-components'
 
@@ -12,7 +13,6 @@ export const GridContainer = styled.div`
     border-radius: 5px;
     max-height: 77vh;
     overflow-y: hidden;
-
 `
 
 export const Table = styled.table`
@@ -62,6 +62,7 @@ export const Td = styled.td`
     &.id-column {
         width: 150px;
     }
+
 `
 
 // Tr é utilizada para definir linhas em tabelas
@@ -105,4 +106,8 @@ export const StyledPagination = styled(ReactPaginate)`
         color: #fff;
         border-color: #167F92;
     }
+`
+
+export const StyledIcon = styled(FontAwesomeIcon)`
+    cursor: pointer;
 `

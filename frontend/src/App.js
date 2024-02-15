@@ -19,7 +19,7 @@ function App() {
     <>
       <C.GlobalStyle />
       <Main setInfo={setInfo} info={info || []}/>
-      <Grid info={info || []}/>
+      <Grid info={info || []} setInfo={setInfo}/>
     </>
   );
 }

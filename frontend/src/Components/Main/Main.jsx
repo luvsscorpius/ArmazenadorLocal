@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import * as C from './Styles'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import clsx from 'clsx';
+
 
 const Main = ({setInfo, info}) => {
 
@@ -39,12 +41,14 @@ const Main = ({setInfo, info}) => {
                 }
 
                 toast.success('Informações adicionadas com sucesso.')
+
+                // Limpando os inputs depois de adicionar uma nova pessoa
+                setNome('')
+                setSobrenome('')
+                setData('')
             }
 
-            // Limpando os inputs depois de adicionar uma nova pessoa
-            document.getElementById('nome').value = ''
-            document.getElementById('sobrenome').value = ''
-            setData('')
+
     }
 
     return (
