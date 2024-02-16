@@ -4,7 +4,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import clsx from 'clsx';
 
-
 const Main = ({setInfo, info}) => {
 
     const [nome, setNome] = useState('')
@@ -56,15 +55,17 @@ const Main = ({setInfo, info}) => {
             <C.Title>Armazenador Local</C.Title>
                 <C.Content>
                     <C.Form>
-                        <C.Label htmlFor="nome">Nome</C.Label>
-                        <C.Input name="nome" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+                            <C.Label htmlFor="nome">Nome</C.Label>
+                            <C.Input name="nome" id="nome" value={nome} onChange={(e) => setNome(e.target.value)} />
+                        
+                            <C.Label htmlFor="sobrenome">Sobrenome</C.Label>
+                            <C.Input name="sobrenome" id="sobrenome" value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
+                        
 
-                        <C.Label htmlFor="sobrenome">Sobrenome</C.Label>
-                        <C.Input name="sobrenome" id="sobrenome" value={sobrenome} onChange={(e) => setSobrenome(e.target.value)} />
+                            <C.Label>Data de nascimento</C.Label>
+                            <C.Input type="date" value={data} onChange={(e) => setData(e.target.value)} className="date" />      
 
-                        <C.Label>Data de nascimento</C.Label>
-                        <C.Input type="date" value={data} onChange={(e) => setData(e.target.value) } />
-
+                            
                         <C.Button type="button" onClick={armazenar}>Adicionar</C.Button>
 
                     </C.Form>
