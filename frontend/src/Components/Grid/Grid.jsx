@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import * as G from './Styles'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
@@ -10,7 +10,44 @@ import clsx from 'clsx';
 const Grid = ({info, setInfo}) => {
     // Paginação da tabela
     const [currentPage, setCurrentPage] = useState(0)
-    const itemsPerPage = 2
+    const [itemsPerPage, setItemsPerPage] = useState(2) 
+
+    useEffect(() => {
+        const updateItemsPerPage = () => {
+            // Definindo alturas especificas
+            const breakpoints = {
+                small: 480, // Exemplo: altura de tela para dispositivos pequenos
+                medium: 768, // Exemplo: altura de tela para dispositivos médios
+                large: 932,
+            };
+
+            // Determinando a altura atual da tela
+            const screenHeight = window.innerHeight;
+
+            // Determinando o número de itens por página com base na altura da tela
+            let itemsPerPage = 2; // Valor padrão
+            if (screenHeight < breakpoints.medium) {
+                itemsPerPage = 2; // Por exemplo, exibe 1 item por página em dispositivos pequenos
+            } else if (breakpoints.large) {
+                itemsPerPage = 6; // Por exemplo, exibe 2 itens por página em dispositivos médios ou maiores
+            } else {
+                itemsPerPage = 10
+            }
+
+            // Atualize o estado com o novo número de itens por página
+            setItemsPerPage(itemsPerPage);
+        };
+
+        // Execute a função de atualização ao montar o componente e ao redimensionar a tela
+        updateItemsPerPage();
+        window.addEventListener('resize', updateItemsPerPage);
+
+        // Remova o listener de evento ao desmontar o componente para evitar vazamentos de memória
+        return () => {
+            window.removeEventListener('resize', updateItemsPerPage);
+        };
+    }, []);
+
 
     // Essa função é usada para quando o usuário clica em um botão da paginação
     const handlePageClick = ({selected}) => {

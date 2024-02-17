@@ -38,16 +38,15 @@ const Main = ({setInfo, info}) => {
                     // Se info nao for um array, cria um novo array com o novo objeto
                     setInfo([novoObjeto])
                 }
+                
 
-                toast.success('Informações adicionadas com sucesso.')
+                // toast.success('Informações adicionadas com sucesso.')
 
                 // Limpando os inputs depois de adicionar uma nova pessoa
                 setNome('')
                 setSobrenome('')
                 setData('')
             }
-
-
     }
 
     return (
