@@ -38,7 +38,6 @@ const Main = ({setInfo, info}) => {
                 // Passa a chave e transforma em JSON, passa o array e o valor
                 localStorage.setItem(chave, JSON.stringify([...informacoes, novoObjeto]))
                 
-
                 // toast.success('Informações adicionadas com sucesso.')
 
                 // Limpando os inputs depois de adicionar uma nova pessoa
