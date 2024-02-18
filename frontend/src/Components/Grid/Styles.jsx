@@ -13,6 +13,10 @@ export const GridContainer = styled.div`
     border-radius: 5px;
     max-height: 77vh;
     overflow-y: hidden;
+
+    @media (max-width: 700px) {
+        overflow-y: scroll;
+    }
 `
 
 export const Table = styled.table`

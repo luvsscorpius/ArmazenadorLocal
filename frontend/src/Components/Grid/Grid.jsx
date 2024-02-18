@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import clsx from 'clsx';
 
-const Grid = ({info, setInfo}) => {
+const Grid = ({info, setInfo, infoLocalStorage}) => {
     // Paginação da tabela
     const [currentPage, setCurrentPage] = useState(0)
     const [itemsPerPage, setItemsPerPage] = useState(2) 
@@ -27,11 +27,11 @@ const Grid = ({info, setInfo}) => {
             // Determinando o número de itens por página com base na altura da tela
             let itemsPerPage = 2; // Valor padrão
             if (screenHeight < breakpoints.medium) {
-                itemsPerPage = 2; // Por exemplo, exibe 1 item por página em dispositivos pequenos
-            } else if (breakpoints.large) {
-                itemsPerPage = 6; // Por exemplo, exibe 2 itens por página em dispositivos médios ou maiores
+                itemsPerPage = 2; // Por exemplo, exibe 2 item por página em dispositivos pequenos
+            } else if (screenHeight < breakpoints.large) {
+                itemsPerPage = 5; // Por exemplo, exibe 5 itens por página em dispositivos médios ou maiores
             } else {
-                itemsPerPage = 10
+                itemsPerPage = 7
             }
 
             // Atualize o estado com o novo número de itens por página
@@ -57,8 +57,15 @@ const Grid = ({info, setInfo}) => {
 
     // O offset é um indice que aponta para o primeiro elemento que deve ser exibido na página atual. Ele é calculado multiplicando o número da página atual pelo numero de itens da página por exemplo na primeira pagina so teram 10 itens e a próxima página começara pelo item 11.
     const offset = currentPage * itemsPerPage;
+
+    // Combinando os dados do localStorage junto com os novos inseridos no estado principal em um unico array
+    const dadosCombinados = info.map((item, index) => {
+        // Aqui estamos retornando um novo objeto combinando as propriedades atuais do info junto com os do localStorage
+        return {...item, ...infoLocalStorage[index]}
+    })
+
     //currentPageData é um novo array que contém os dados a serem exibidos na página atual.
-    const currentPageData = info.slice(offset, offset + itemsPerPage)
+    const currentPageData = dadosCombinados.slice(offset, offset + itemsPerPage)
 
     // Função para deletar alguma informação
     const handleDelete = (linhaIndex) => {

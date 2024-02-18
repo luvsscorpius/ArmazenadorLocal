@@ -10,14 +10,7 @@ const Main = ({setInfo, info}) => {
     const [sobrenome, setSobrenome] = useState('')
     const [data, setData] = useState('')
 
-    const armazenar = () => {
-            // Stringify para usar em objeto
-            // Criando uma constante onde vai verificar se existe a chave se não cria um array vazio
-            // const pessoas = JSON.parse(localStorage.getItem(chave)) || []
-            // // Passa a chave e transforma em JSON, passa o array e o valor
-            // localStorage.setItem(chave, JSON.stringify([...pessoas, valor]))
-            // console.log(pessoas)
-            // setInfo(pessoas)
+    const armazenar = (chave) => {
 
             if ((nome === '') || (sobrenome === '') || (data === '')) {
                 toast.warning('Insira todas as informações.')
@@ -38,6 +31,12 @@ const Main = ({setInfo, info}) => {
                     // Se info nao for um array, cria um novo array com o novo objeto
                     setInfo([novoObjeto])
                 }
+
+                // Stringify para usar em objeto
+                // Criando uma constante onde vai verificar se existe a chave se não cria um array vazio
+                const informacoes = JSON.parse(localStorage.getItem(chave)) || []
+                // Passa a chave e transforma em JSON, passa o array e o valor
+                localStorage.setItem(chave, JSON.stringify([...informacoes, novoObjeto]))
                 
 
                 // toast.success('Informações adicionadas com sucesso.')
@@ -65,7 +64,7 @@ const Main = ({setInfo, info}) => {
                             <C.Input type="date" value={data} onChange={(e) => setData(e.target.value)} className="date" />      
 
                             
-                        <C.Button type="button" onClick={armazenar}>Adicionar</C.Button>
+                        <C.Button type="button" onClick={() => armazenar('inf')}>Adicionar</C.Button>
 
                     </C.Form>
                 </C.Content> 

@@ -5,22 +5,25 @@ import * as C from './Components/Main/Styles'
 import Footer from './Components/Footer/Footer';
 
 function App() {
-  const [info, setInfo] = useState([
-    
-  ])
+  const [info, setInfo] = useState([])
+  // Pegando as informações do localStorage
+  const infoLocalStorage = JSON.parse(localStorage.getItem('inf')) || []
 
   useEffect(() => {
-    if (info !== null) {
-      console.log("info:", info);
-      console.log("info.length:", info.length);
-    }
-  }, [info]);
+    // Carregando os dados do localStorage dentro do estado principal
+    setInfo(infoLocalStorage)
+  }, [])
+
+  useEffect(() => {
+    // Atualizar o localStorage sempre que os dados do estado mudarem
+    localStorage.setItem('inf', JSON.stringify(info))
+  }, [info])
 
   return (
     <>
       <C.GlobalStyle />
       <Main setInfo={setInfo} info={info || []}/>
-      <Grid info={info || []} setInfo={setInfo}/>
+      <Grid info={info || []} setInfo={setInfo} infoLocalStorage={infoLocalStorage}/>
       <Footer/>
     </>
   );
